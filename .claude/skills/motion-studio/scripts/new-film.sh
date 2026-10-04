@@ -11,12 +11,22 @@ cp "$SKILL/HOUSE_RULES.md" "$DIR/HOUSE_RULES.md"
 cat > "$DIR/BRIEF.md" <<'EOF'
 # Brief
 
+Filled in by the step 00 interview (see INTERVIEW.md). Raw answers live in interview.json.
+
+- Film type:
 - Audience:
 - Duration / BPM:
-- Aspects: 16:9, 9:16, 1:1
+- Aspects:
+- Source assets:
 - Message (one sentence):
+- Hook:
+- Features:
+- Proof metric:
+- Tone:
 - Palette:
 - Type:
+- Sound:
+- Ending / CTA:
 
 ## Story
 
@@ -25,6 +35,7 @@ cat > "$DIR/BRIEF.md" <<'EOF'
 |---|---|---|---|---|
 EOF
 printf 'out/\n' > "$DIR/.gitignore"
+echo '{}' > "$DIR/interview.json"
 echo "film scaffolded at $DIR"
 echo "preview: open $DIR/index.html (append ?aspect=9:16 or ?aspect=1:1)"
 echo "skill:   $SKILL"

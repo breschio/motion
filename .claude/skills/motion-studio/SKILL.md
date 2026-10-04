@@ -11,6 +11,7 @@ Everything lives in this skill folder (`$SKILL` below = the directory holding th
 
 | Path | What it is |
 |---|---|
+| `INTERVIEW.md` | Step 00: the questions that fill in the brief, asked as clickable prompts. |
 | `HOUSE_RULES.md` | Non-negotiable rules. Copied into the film folder; re-read before every pass. |
 | `template/` | Starter film: `index.html`, `lib.js` (springs, easing, beat grid, layout, seeded noise, motion blur), `film.js` (the scenes). |
 | `scripts/new-film.sh <dir>` | Scaffolds a film folder from `template/`. |
@@ -20,6 +21,10 @@ Everything lives in this skill folder (`$SKILL` below = the directory holding th
 | `scripts/contact-sheet.mjs <dir>` | Renders stills and tiles them into a contact sheet PNG for critique. |
 
 Requirements: Node 18+, `playwright` (global or local; Chromium already installed), `ffmpeg`. Never run `playwright install` if a browser is already present.
+
+## Step 00 · Interview ⏸
+
+Always start here. Scaffold the film folder (step 02's command) and then follow `INTERVIEW.md`. It asks the user up to four rounds of questions with the **AskUserQuestion** tool: the job, the story, look and sound, then a confirmation. Their answers fill `interview.json` and `BRIEF.md`, which steps 03–07 and 10–12 use as input. Skip questions the request already answers. If the user says "just make it", skip the interview, fill the brief yourself, and say what you assumed.
 
 ## The 12 steps
 
@@ -39,8 +44,8 @@ Reference prompt: *"make a dynamic 15-second motion graphics video that shows wh
 It works because it names a duration (forces a timeline), an audience (a résumé reel must show range), and a bar ("go all out" licenses camera moves, kinetic type, and sound). When the user's request is vaguer than this, fill in those three things yourself before planning.
 
 ### 04 · Brief and story
-Write `films/<name>/BRIEF.md`: audience, duration, aspect ratios, one-sentence message, palette, type.
-For a product film, use this spine unless the user gives another:
+`BRIEF.md` already exists from step 00. Fill any gaps it left yourself and note what you assumed.
+For a product film, use this spine unless the interview set another one:
 1. Hook — the problem, in large kinetic type.
 2. The product appears; its UI assembles itself.
 3. Three features as UI moments with a cursor doing real actions.
@@ -91,7 +96,7 @@ Before showing the user any full render, critique it yourself. Minimum 3 rounds.
 5. Ship only when every axis is ≥ 8 and the banned-defaults list is clean. Report the final scores.
 
 ### 12 · Ship ⏸
-Render every aspect the brief asks for. Run them in parallel:
+Render every aspect listed under Formats in `interview.json`. Run them in parallel:
 ```bash
 node $SKILL/scripts/audio.mjs  films/<name>
 node $SKILL/scripts/render.mjs films/<name> --aspect 16:9 &

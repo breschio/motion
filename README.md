@@ -9,3 +9,7 @@ Everything is code. There are no keyframes, footage, or samples.
 - `audio.mjs` synthesizes the soundtrack (kick, clap, hats, sidechained pad and bass, arpeggio, risers, impacts, reverb) on the same beat grid.
 
 Open `index.html` to watch it live in a browser (click to restart). Rebuild the video with `npm run build` (needs ffmpeg and Playwright's Chromium).
+
+## Motion studio skill
+
+`.claude/skills/motion-studio/` packages the method as a Claude Code skill: house rules, a seek(t) film template with closed-form springs and a beat grid, an asset gatherer, a synth for score and SFX, a contact-sheet critique loop, and a multi-aspect renderer. Ask Claude Code for a motion graphics video in this repo and it will pick the skill up.

@@ -1,0 +1,12 @@
+{
+  "name": "claude-showreel-2026",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audio": "node audio.mjs build/soundtrack.wav",
+    "frames": "node render.mjs build/frames --samples 10",
+    "encode": "ffmpeg -y -framerate 60 -i build/frames/f_%04d.png -i build/soundtrack.wav -c:v libx264 -preset slow -crf 17 -pix_fmt yuv420p -c:a aac -b:a 256k -shortest -movflags +faststart showreel.mp4",
+    "build": "npm run audio && npm run frames && npm run encode"
+  },
+  "devDependencies": { "playwright": "^1.56.0" }
+}
